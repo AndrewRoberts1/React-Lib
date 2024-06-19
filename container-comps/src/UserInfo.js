@@ -1,8 +1,8 @@
 export const UserInfo = ({user}) => {
-    //Set the vars based on the user object
-    const {name, age, hairColour, hobbies} = user;
+    //Set the vars based on the user object - if no user then a
+    const {name, age, hairColour, hobbies} = user || {};
 
-    return (
+    return user ? (
         <>
             <h3>{name}</h3>
             <p>Age: {age} years</p>
@@ -15,5 +15,5 @@ export const UserInfo = ({user}) => {
             </ul>
         </>
         
-    )
+    ) : <p>Loading...</p>
 }
