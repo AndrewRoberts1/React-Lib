@@ -1,19 +1,19 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios";
 
-export const CurrentUserLoader = ({ children }) => {
+export const UserLoader = ({ userId, children }) => {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
         (async () => {
             try {
-                const response = await axios.get('/current-user');
+                const response = await axios.get(`/user/${userId}`);
                 setUser(response.data);
             } catch (error) {
                 console.error("Failed to load current user:", error);
             }
         })();
-    }, []);
+    }, [userId]);
 
     return (
         <>

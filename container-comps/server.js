@@ -1,3 +1,5 @@
+//Run with - node server
+
 const express = require('express');
 const cors = require('cors');
 const app = express();
@@ -7,18 +9,21 @@ app.use(express.json());
 
 let users = [
     {
+        id: 1,
         name: 'Thomas',
         age: 15,
         hairColour: 'black & white',
         hobbies: ['napping', 'guading house', 'dreamies']
     },
     {
+        id: 2,
         name: 'Giz',
         age: 15,
         hairColour: 'grey & white',
         hobbies: ['napping', 'eating', 'shedding']
     },
     {
+        id: 3,
         name: 'Rosie',
         age: 5,
         hairColour: 'everything',
@@ -35,18 +40,21 @@ let currentUser = {
 
 const products = [
     {
+        id: 1,
         name: 'TV',
         price: 540,
         desc: 'Big oled',
         rating: 4.6
     },
     {
+        id: 2,
         name: 'Ball',
         price: 5,
         desc: 'Big ball',
         rating: 3.2
     },
     {
+        id: 3,
         name: 'Shoe',
         price: 120,
         desc: 'Big shoes',
