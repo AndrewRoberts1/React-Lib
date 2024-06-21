@@ -77,9 +77,23 @@ app.post('/user/:id', (req, res)=> {
     const {id} = req.params;
     const { user: updatedUser } = req.body;
 
-    //users = users.map(user => user.id == id ? updatedUser)
+    // Find the index of the user to update
+    const userIndex = users.findIndex(user => user.id == id);
 
-    res.json(users.find(user => user.id == id));
+    // Check if the user was found
+    if (userIndex!== -1) {
+        // Update the user's properties with the new data
+        users[userIndex] = {
+           ...users[userIndex],
+           ...updatedUser
+        };
+
+        // Return the updated user
+        res.json(users[userIndex]);
+    } else {
+        // Handle the case where the user was not found
+        res.status(404).send('User not found');
+    }
 });
 
 app.get('/products', (req, res) => {
