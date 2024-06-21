@@ -1,8 +1,13 @@
-export const ProductInfo = ({user}) => {
-    //Set the vars based on the user object
-    const {name, price, desc, rating} = product;
+import { useResource } from "./useResource";
 
-    return (
+export const ProductInfo = ({productId}) => {
+    const product = useResource(`/product/${productId}`);
+
+    //Set the vars based on the user object
+    const {name, price, desc, rating} = product || {};
+
+    
+    return product ? (
         <>
             <h3>{name}</h3>
             <p>Price: £{price}</p>
@@ -10,5 +15,5 @@ export const ProductInfo = ({user}) => {
             <h4>Avg Rating: {rating}</h4>
         </>
         
-    )
+    ) : <p>Loading..</p>
 }

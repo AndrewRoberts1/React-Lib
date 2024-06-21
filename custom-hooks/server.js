@@ -98,7 +98,13 @@ app.post('/user/:id', (req, res)=> {
 
 app.get('/products', (req, res) => {
     res.json(products);
-})
+});
+
+app.get('/product/:id', (req, res)=> {
+    const {id} = req.params;
+
+    res.json(products.find(product => product.id == id));
+});
 
 app.listen(8080, () => {
     console.log('Server listening on port 8080')
